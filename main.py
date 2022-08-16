@@ -17,8 +17,6 @@ game = Game()
 
 #chargé le joueur
 
-player = Player()
-
 running = True
 #boucle tanr que cette condision est maintenue vrai
 while running:
@@ -41,8 +39,15 @@ while running:
     for projectile in game.player.all_projectiles:
         projectile.move()
 
+    #move des monstre
+    for monster in game.all_monsters:
+        monster.forward()
+
     #applique l'image des projectiles
     game.player.all_projectiles.draw(screen)
+
+    #applique le groupe de monstre
+    game.all_monsters.draw(screen)
 
     #metre a jour l'ecran
     pygame.display.flip()

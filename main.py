@@ -35,6 +35,9 @@ while running:
     #applique le joueur
     screen.blit(game.player.image, game.player.rect)
 
+    #applique la bar de vie
+    game.player.update_health_bar(screen)
+
     #récupéré les projectiles
     for projectile in game.player.all_projectiles:
         projectile.move()

@@ -18,10 +18,7 @@ class Monster(pygame.sprite.Sprite):
         self.health -= amount
 
         #verifier si le monstre est mort
-        if self.health <= 0:
-            #suprimé mais sa peut surchargé car sa vas en recrée un nouveau 
-            #self.remove()
-            
+        if self.health <= 0:            
             #faire réapparaitre le monstre detruit 
             self.rect.x = 1000 + random.randint(0, 300)
             self.velocity = random.randint(1,3)

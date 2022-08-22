@@ -42,6 +42,7 @@ while running:
     #move des monstre
     for monster in game.all_monsters:
         monster.forward()
+        monster.update_health_bar(screen)
 
     #applique l'image des projectiles
     game.player.all_projectiles.draw(screen)

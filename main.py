@@ -1,4 +1,5 @@
 import pygame
+import math
 pygame.init()
 from game import Game
 from player import Player
@@ -10,6 +11,18 @@ screen = pygame.display.set_mode((1080,720))
 #importé de chargé l'arriere plant de notre jeux 
 background = pygame.image.load('assets/bg.jpg')
 
+#chargé la banièree de demarage du jeux
+banner = pygame.image.load('assets/banner.png')
+banner = pygame.transform.scale(banner, (500,500))
+banner_rect = banner.get_rect()
+banner_rect.x = math.ceil(screen.get_width()/4)
+
+#importé le bouton de demarage du jeux
+play_button = pygame.image.load('assets/button.png')
+play_button = pygame.transform.scale(play_button, (400,150))
+play_button_rect = play_button.get_rect()
+play_button_rect.x = math.ceil(screen.get_width()/3.33)
+play_button_rect.y = math.ceil(screen.get_height()/2)
 
 #charger notre jeux
 game = Game()
@@ -24,35 +37,16 @@ while running:
     #applique l'arriere plan 
     screen.blit(background, (0,-200))
 
-    #verifier si le joueur vas gauche ou droite
-    if game.pressed.get(pygame.K_RIGHT)and game.player.rect.x < 914:
-        game.player.move_right()
-    elif game.pressed.get(pygame.K_LEFT) and game.player.rect.x > -33:
-        game.player.move_left()
-    
-    print(game.player.rect.x)
-
-    #applique le joueur
-    screen.blit(game.player.image, game.player.rect)
-
-    #applique la bar de vie
-    game.player.update_health_bar(screen)
-
-    #récupéré les projectiles
-    for projectile in game.player.all_projectiles:
-        projectile.move()
-
-    #move des monstre
-    for monster in game.all_monsters:
-        monster.forward()
-        monster.update_health_bar(screen)
-
-    #applique l'image des projectiles
-    game.player.all_projectiles.draw(screen)
-
-    #applique le groupe de monstre
-    game.all_monsters.draw(screen)
-
+    #vdeclenchez le jeux si commencé
+    if game.is_playing:
+        game.update(screen)
+    #verifier si le jeux a commencé 
+    else :  
+        #ajouté le bouton de demarage du jeux
+        screen.blit(play_button, play_button_rect)
+        #ajouté mon ecran de demarage du jeux
+        screen.blit(banner, banner_rect)
+   
     #metre a jour l'ecran
     pygame.display.flip()
 
@@ -73,3 +67,9 @@ while running:
 
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False 
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            #verifier si le joueur a cliqué sur le bouton de demarage du jeux
+            if play_button_rect.collidepoint(event.pos):
+                #metre le jeux en cours
+                game.start()

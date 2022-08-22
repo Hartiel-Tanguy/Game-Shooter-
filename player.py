@@ -21,6 +21,9 @@ class Player(pygame.sprite.Sprite):
     def damage(self, amount):
         if self.health - amount > amount:
             self.health -= amount
+        else:
+            #si le joueur est mort alors il est supprimé
+            self.game.game_over()
 
     def update_health_bar(self, surface):
         #dessiner l'arriere plan de la bar de vie

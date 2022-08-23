@@ -83,3 +83,4 @@ while running:
     #fixé le nombre de fps
     clock.tick(FPS)
     
+

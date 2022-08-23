@@ -1,14 +1,13 @@
 import pygame
 import random
-
-class Monster(pygame.sprite.Sprite):
+import animation
+class Monster(animation.AnimateSrpite):
     def __init__(self, game):
-        super().__init__()
+        super().__init__("mummy")
         self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 0.1
-        self.image = pygame.image.load("assets/mummy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
         self.rect.y = 540
@@ -31,6 +30,10 @@ class Monster(pygame.sprite.Sprite):
                 self.game.all_monsters.remove(self)
                 #appele de la methode pour verifier si la barre est chargé
                 self.game.comet_event.attempt_fall()
+
+
+    def update_animation(self):
+        self.animate()
 
     def update_health_bar(self, surface):
         #definir une couleur pour la jauge de vie (RGB)

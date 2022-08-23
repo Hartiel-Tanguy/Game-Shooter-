@@ -11,11 +11,11 @@ class AnimateSrpite(pygame.sprite.Sprite):
         self.current_image = 0
         self.images = animation.get('sprite_name')
     #animé le sprites
-    #def animate(self):
-     #   self.current_image += 1
-      #  if self.current_image >= len (self.images):
-       #     self.current_image = 0
-        #self.image = self.images[self.current_image]
+    # def animate(self):
+    #     self.current_image += 1
+    #     if self.current_image >= len (self.images):
+    #         self.current_image = 0
+    #     self.image = self.images[self.current_image]
     
 #definir une fonction pour chargé les image de l'animation
 def load_animation_images(sprite_name):

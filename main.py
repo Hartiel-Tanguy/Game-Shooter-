@@ -3,6 +3,12 @@ import math
 pygame.init()
 from game import Game
 from player import Player
+
+
+#definir une clock (fps)
+clock = pygame.time.Clock()
+FPS = 200
+
 #generé la fenetre du jeux 
 
 pygame.display.set_caption("game shooter")
@@ -73,3 +79,5 @@ while running:
             if play_button_rect.collidepoint(event.pos):
                 #metre le jeux en cours
                 game.start()
+    #fixé le nombre de fps
+    clock.tick(FPS)

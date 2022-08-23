@@ -24,6 +24,14 @@ class Monster(pygame.sprite.Sprite):
             self.velocity = random.randint(1,3)
             self.health = self.max_health
 
+
+            #si la barre d'event comet est active
+            if self.game.comet_event.is_full_loaded():
+                #retitre le monstre
+                self.game.all_monsters.remove(self)
+                #appele de la methode pour verifier si la barre est chargé
+                self.game.comet_event.attempt_fall()
+
     def update_health_bar(self, surface):
         #definir une couleur pour la jauge de vie (RGB)
         bar_color = (255,0,0)

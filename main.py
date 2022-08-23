@@ -1,3 +1,4 @@
+from smtplib import LMTP
 import pygame
 import math
 pygame.init()
@@ -81,3 +82,4 @@ while running:
                 game.start()
     #fixé le nombre de fps
     clock.tick(FPS)
+    

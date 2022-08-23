@@ -16,7 +16,7 @@ class AnimateSrpite(pygame.sprite.Sprite):
     #     if self.current_image >= len (self.images):
     #         self.current_image = 0
     #     self.image = self.images[self.current_image]
-    
+     
 #definir une fonction pour chargé les image de l'animation
 def load_animation_images(sprite_name):
     #charger les image dans le dossié assets
@@ -34,5 +34,5 @@ def load_animation_images(sprite_name):
 
 #definir un dictionnaire qui vas contenir les image de tout les sprites
 animation = {
-    "mummy": load_animation_images("mummy"),
+    "mummy": load_animation_images("mummy")
 }
